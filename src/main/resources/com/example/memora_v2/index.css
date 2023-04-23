@@ -1,0 +1,243 @@
+@font-face {
+    font-family: 'Ubuntu Regular';
+    src: url(Ubuntu-Regular.ttf);
+}
+@font-face {
+    font-family: 'Ubuntu Medium';
+    src: url(Ubuntu-Medium.ttf);
+}
+@font-face {
+    font-family: 'Alkatra';
+    src: url(Alkatra-VariableFont_wght.ttf);
+}
+
+* {
+    -fx-font-family:'Ubuntu Regular';
+}
+AnchorPane {
+    -fx-background-color: #F8F9FC;
+}
+
+#addCard {
+    -fx-background-radius: 30;
+    -fx-background-color:  #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+}
+
+#addCard:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 4, 4, 4, 4);
+}
+
+#title {
+    -fx-font-family: 'Ubuntu Medium' ;
+}
+
+#myAreaAnswer, #myAreaQuestion, #myQuestionLabel, #myAnswerLabel,#myModifyQuestion, #myModifyAnswer{
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-font-size: 28px;
+}
+#myAreaQuestion, #myModifyQuestion {
+    -fx-background-color:#736B92 ;
+}
+#myAreaAnswer, #myModifyAnswer {
+    -fx-background-color:white ;
+}
+
+
+
+#myAreaQuestion,#myModifyQuestion{
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #FFFFFF;
+}
+
+
+
+#myAreaQuestion .content, #myModifyQuestion .content {
+    -fx-background-color: #736B92 ;
+
+}
+
+#myAreaAnswer, #myAnswerLabel, #myModifyAnswer{
+    -fx-text-fill: #736B92;
+    -fx-prompt-text-fill: #736B92;
+}
+
+#myAreaAnswer .content ,#myModifyAnswer .content {
+    -fx-background-color: #FFFFFF ;
+}
+
+
+#myAddButton, #myDeleteButton, #myModifyButton:hover {
+    -fx-background-color: #736B92;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+    -fx-font-size: 32px;
+    -fx-text-fill: #FFFFFF;
+}
+#myModifyButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #736B92;
+    -fx-border-radius: 20;
+    -fx-border-color: #736B92;
+    -fx-border-width: 3px;
+    -fx-font-size: 32px;
+}
+
+#myAddButton:hover, #myDeleteButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #736B92;
+    -fx-border-radius: 20;
+    -fx-border-color: #736B92;
+    -fx-border-width: 3px;
+}
+
+#perfectButton {
+    -fx-background-color: #551FFF;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+    -fx-font-size: 32px;
+    -fx-text-fill: #FFFFFF;
+ }
+
+#goodButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #551FFF;
+    -fx-border-radius: 20;
+    -fx-border-color: #551FFF;
+    -fx-border-width: 3px;
+    -fx-font-size: 32px;
+}
+
+#badButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #736B92;
+    -fx-border-radius: 20;
+    -fx-border-color: #736B92;
+    -fx-border-width: 3px;
+    -fx-font-size: 32px;
+}
+
+#questionP {
+    -fx-font-family: 'Ubuntu Medium';
+}
+
+#tenButton {
+    -fx-background-color: #A7C2CC;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+    -fx-font-size: 36px;
+    -fx-text-fill: #FFFFFF;
+}
+
+#tenButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #A7C2CC;
+    -fx-border-radius: 20;
+    -fx-border-color: #A7C2CC;
+    -fx-border-width: 3px;
+}
+
+
+#twentyButton {
+    -fx-background-color: #7D5C65;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+    -fx-font-size: 36px;
+    -fx-text-fill: #FFFFFF;
+}
+#twentyButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #7D5C65;
+    -fx-border-radius: 20;
+    -fx-border-color: #7D5C65;
+    -fx-border-width: 3px;
+}
+#allButton {
+    -fx-background-color: #736B92;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+    -fx-font-size: 36px;
+    -fx-text-fill: #FFFFFF;
+}
+#allButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #736B92;
+    -fx-border-radius: 20;
+    -fx-border-color: #736B92;
+    -fx-border-width: 3px;
+}
+
+.list-view {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-color: white;
+}
+
+
+.list-cell{
+    -fx-font-size: 24;
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-text-fill: #736B92;
+    -fx-background-insets: 0;
+    -fx-background-radius: 20;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #736B92;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.list-cell:filled:selected:focused {
+    -fx-background-color: #736B92;
+    -fx-text-fill: white;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-background-color: #736B92; /* set the background color of the scroll bar */
+    -fx-background-radius: 20;
+    -fx-opacity: 0.3;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #551FFF;
+    -fx-background-insets: 1px;
+}
+
+.list-view .scroll-bar:horizontal .increment-button ,
+.list-view .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+.list-view .scroll-bar:vertical .increment-button ,
+.list-view .scroll-bar:vertical .decrement-button {
+
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+
+}
+
+.list-view  .scroll-bar .increment-arrow,
+.list-view  .scroll-bar .decrement-arrow
+{
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+
+
+
+
+
+
+
+
+
