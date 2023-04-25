@@ -209,13 +209,7 @@ AnchorPane {
     -fx-background-insets: 1px;
 }
 
-.list-view .scroll-bar:horizontal .increment-button ,
-.list-view .scroll-bar:horizontal .decrement-button {
-    -fx-background-color:transparent;
-    -fx-background-radius: 0em;
-    -fx-padding:0 0 10 0;
 
-}
 
 .list-view .scroll-bar:vertical .increment-button ,
 .list-view .scroll-bar:vertical .decrement-button {
@@ -236,8 +230,70 @@ AnchorPane {
 
 
 
+.scroll-bar:vertical {
+    -fx-background-color: #736B92; /* set the background color of the scroll bar */
+    -fx-background-radius: 20;
+    -fx-opacity: 0.3;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #551FFF;
+    -fx-background-insets: 1px;
+}
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
 
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
 
+}
 
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow
+{
+    -fx-shape: " ";
+    -fx-padding:0;
+}
 
+#title{
+    -fx-font-size: 40px;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-text-fill: #15192c;
+}
+
+#textTitle, #text2Title{
+    -fx-font-size: 20px;
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-text-fill: #92959e;
+}
+#text2Title{
+    -fx-text-fill: #a9a9a9;
+}
+
+#practiceText, #manageText, #accountText, #settingText, #logoutText{
+    -fx-font-size: 24px;
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-text-fill: #909090;
+}
+
+#questionP{
+    -fx-font-size: 36px;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-text-fill: Black;
+}
+
+#LabelAnswer{
+    -fx-font-size: 36px;
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-text-fill: #736b92;
+}
+
+#boxQuestion, #boxAnswer{
+    -fx-font-size: 36px;
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-text-fill: white;
+}
+#boxAnswer{
+    -fx-text-fill: #736b92;
+}
 

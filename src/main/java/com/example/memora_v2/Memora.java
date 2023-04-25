@@ -12,8 +12,9 @@ import java.util.Objects;
 public class Memora extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("manage.fxml")));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,1450,840);
         String css = Objects.requireNonNull(this.getClass().getResource("index.css")).toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);

@@ -151,7 +151,8 @@ public class Navbar implements Initializable  {
     public void switchTo(Event event, String target) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(target)));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,1450,840);
+        //stage.setMaximized(true);
         String css = Objects.requireNonNull(this.getClass().getResource("index.css")).toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);

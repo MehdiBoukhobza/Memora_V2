@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
@@ -67,6 +68,16 @@ public class ModifyCard extends Navbar{
 
         String questionU = myModifyQuestion.getText();
         String answerU = myModifyAnswer.getText();
+
+        if (questionU.isBlank() || answerU.isBlank()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("There is no sin except stupidity.");
+            alert.setContentText("Come on man, you clearly haven't entered any question and/or answer, " +
+                    "and somehow by some miracle, you expect to add a blank card ");
+            alert.showAndWait();
+            return;
+        }
+
         System.out.println(questionU + answerU);
 
 

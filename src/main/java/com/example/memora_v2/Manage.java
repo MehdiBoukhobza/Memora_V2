@@ -11,6 +11,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,6 +41,24 @@ public class Manage extends Navbar  {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+
+        myListView.setCellFactory(param -> {
+            ListCell<String> cell = new ListCell<>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item);
+                    }
+                }
+            };
+            cell.setPrefWidth(0);
+            cell.setWrapText(true);
+
+            return cell;
+        });
 
         plusIcon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {

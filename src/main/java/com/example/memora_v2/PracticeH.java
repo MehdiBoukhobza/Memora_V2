@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -19,6 +20,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PracticeH extends Navbar implements Initializable {
+    @FXML
+    private Button tenButton;
 
 
 
@@ -26,6 +29,15 @@ public class PracticeH extends Navbar implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        tenButton.setOnMouseClicked(event -> {
+            try {
+                switchTo(event, "practice.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        });
 
     }
 
