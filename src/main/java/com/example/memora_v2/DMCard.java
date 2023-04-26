@@ -57,11 +57,12 @@ public class DMCard extends Navbar {
     }
 
     public void deleteCard(ActionEvent event) {
-        String connectQuery1 = " DELETE FROM cards WHERE id = "+ Id +" ";
-                String connectQuery2 = " CREATE TABLE tmp_cards ( id INT AUTO_INCREMENT PRIMARY KEY, Question LONGTEXT, Answer LONGTEXT, Weight INT)";
-                String connectQuery3 = " INSERT INTO tmp_cards (Question, Answer) SELECT Question, Answer FROM cards";
-                String connectQuery4 = " DROP TABLE cards ";
-                String connectQuery5 = " RENAME TABLE tmp_cards TO cards";
+        String connectQuery1 = " DELETE FROM cards WHERE id = " + Id + " ";
+        String connectQuery2 = " CREATE TABLE tmp_cards ( id INT AUTO_INCREMENT PRIMARY KEY, Question LONGTEXT, Answer LONGTEXT);" +
+                "INSERT INTO tmp_cards (Question, Answer) SELECT Question, Answer FROM cards;" +
+                "DROP TABLE cards;RENAME TABLE tmp_cards TO cards; ";
+        String connectQuery3 = " DELETE FROM perfect_cards WHERE id = " + Id + " ;DELETE FROM good_cards WHERE id = " + Id + ";DELETE FROM bad_cards WHERE id = " + Id + " ";
+        String connectQuery4 = "UPDATE bad_cards SET id = id-1 WHERE id > " + Id + " ";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -69,7 +70,6 @@ public class DMCard extends Navbar {
             statement.executeUpdate(connectQuery2);
             statement.executeUpdate(connectQuery3);
             statement.executeUpdate(connectQuery4);
-            statement.executeUpdate(connectQuery5);
 
         } catch (Exception e) {
             e.printStackTrace();

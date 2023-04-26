@@ -297,3 +297,38 @@ AnchorPane {
     -fx-text-fill: #736b92;
 }
 
+#perfectButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #551FFF;
+    -fx-border-radius: 20;
+    -fx-border-color: #551FFF;
+    -fx-border-width: 3px;
+}
+
+#goodButton:hover {
+    -fx-background-color: #86608E;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-border-color: #86608E;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+}
+
+#badButton:hover {
+    -fx-background-color: #736B92;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);
+}
+
+#RecentCards{
+    -fx-font-family: "Ubuntu Regular";
+    -fx-font-size: 32px;
+    -fx-text-fill: #15192c;
+}
+
+#progressText{
+    -fx-font-family: "Ubuntu Regular";
+    -fx-font-size: 24px;
+    -fx-opacity: 0.5;
+    -fx-font-weight: 100;
+}

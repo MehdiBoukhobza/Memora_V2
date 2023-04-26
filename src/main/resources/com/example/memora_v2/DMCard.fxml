@@ -43,12 +43,12 @@
                         <Font name="Ubuntu Regular" size="20.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="443.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER">
+                <Text fx:id="boxQuestion" fill="WHITE" layoutX="443.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER">
                     <font>
                         <Font name="Ubuntu Regular" size="36.0" />
                     </font>
                 </Text>
-                <Text fill="#736b92" layoutX="462.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer">
+                <Text fx:id="boxAnswer" fill="#736b92" layoutX="462.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer">
                     <font>
                         <Font name="Ubuntu Regular" size="36.0" />
                     </font>

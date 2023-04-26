@@ -27,7 +27,7 @@ import java.sql.Statement;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Manage extends Navbar  {
+public class Manage extends Navbar {
 
     @FXML
     private ImageView plusIcon;
@@ -81,8 +81,6 @@ public class Manage extends Navbar  {
         });
 
 
-
-
     }
 
 
@@ -98,38 +96,29 @@ public class Manage extends Navbar  {
         switchTo(event, "addCard.fxml");
     }
 
-    public void updateList(){
+    public void updateList() {
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
 
 
-        String connectQuery = "SELECT * FROM cards ORDER BY id DESC";
+        String connectQuery1 = "SELECT * FROM cards ORDER BY id DESC";
+
 
         try {
             Statement statement = connectDB.createStatement();
-            ResultSet queryOutput = statement.executeQuery(connectQuery);
+            ResultSet queryOutput = statement.executeQuery(connectQuery1);
 
-            while (queryOutput.next()){
+
+            while (queryOutput.next()) {
                 Questions.add(queryOutput.getString("id") + ".  " + queryOutput.getString("Question"));
             }
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -5,7 +5,8 @@ import java.util.ResourceBundle;
 
 public class Settings extends Navbar {
 
-    static float quickPractice = 10;
+    static int quickPractice = 10;
+    static int mediumPractice = 20;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

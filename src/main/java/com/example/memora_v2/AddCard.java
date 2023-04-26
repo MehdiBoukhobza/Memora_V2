@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class AddCard extends Navbar  {
+public class AddCard extends Navbar {
     @FXML
     public TextArea myAreaQuestion;
     @FXML
@@ -28,10 +28,9 @@ public class AddCard extends Navbar  {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
-
     }
 
-    public void addCard(ActionEvent event){
+    public void addCard(ActionEvent event) {
         String question = myAreaQuestion.getText();
         String answer = myAreaAnswer.getText();
 
@@ -40,14 +39,14 @@ public class AddCard extends Navbar  {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText("There is no sin except stupidity.");
-            /*Label contentLabel = new Label("Come on man, you clearly haven't entered any question and/or answer, " +
-                                              "and somehow, by some miracle, you expect to add a blank card ");
+            Label contentLabel = new Label("Come on man, you clearly haven't entered any question and/or answer, " +
+                    "and somehow, by some miracle, you expect to add a blank card ");
             contentLabel.setStyle("-fx-font-family: 'Ubuntu Regular'");
             contentLabel.setWrapText(true);
 
             alert.getDialogPane().setContent(contentLabel);
             alert.getDialogPane().setPrefWidth(400);
-            alert.getDialogPane().setPrefHeight(200);*/
+            alert.getDialogPane().setPrefHeight(200);
             alert.showAndWait();
             return;
         }
@@ -56,14 +55,15 @@ public class AddCard extends Navbar  {
         Connection connectDB = connectNow.getConnection();
 
 
-
-        String connectQuery = "INSERT INTO cards (Question, Answer, Weight) VALUES ('"+question+"','"+answer+"', 5)";
+        String connectQuery1 = "INSERT INTO cards (Question, Answer) VALUES ('" + question + "','" + answer + "')";
+        String connectQuery2 = "INSERT INTO bad_cards (id) SELECT id FROM cards ORDER BY id DESC LIMIT 1;";
 
         try {
             Statement statement = connectDB.createStatement();
-            statement.executeUpdate(connectQuery);
+            statement.executeUpdate(connectQuery1);
+            statement.executeUpdate(connectQuery2);
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         SuccessMessage.setStyle("-fx-opacity: 1;");
@@ -72,8 +72,6 @@ public class AddCard extends Navbar  {
         }));
         timeline.playFromStart();
     }
-
-
 
 
 }

@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class ModifyCard extends Navbar{
+public class ModifyCard extends Navbar {
     @FXML
     private TextArea myModifyQuestion;
     @FXML
@@ -32,37 +32,35 @@ public class ModifyCard extends Navbar{
         modify();
 
 
-
-
     }
 
 
-    public void modify(){
+    public void modify() {
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
 
 
-        String connectQuery = " SELECT Question, Answer FROM cards where id = "+Id+" ";
+        String connectQuery = " SELECT Question, Answer FROM cards where id = " + Id + " ";
 
         try {
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(connectQuery);
 
-            while (queryOutput.next()){
+            while (queryOutput.next()) {
                 myModifyQuestion.setText(queryOutput.getString("Question"));
                 myModifyAnswer.setText(queryOutput.getString("Answer"));
 
 
             }
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
     }
 
-    public void save(ActionEvent event){
+    public void save(ActionEvent event) {
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
 
@@ -81,12 +79,17 @@ public class ModifyCard extends Navbar{
         System.out.println(questionU + answerU);
 
 
-        String connectQuery = " UPDATE cards SET Question = '"+questionU+"', Answer = '"+answerU+"' WHERE id = "+Id+" ";
+        String connectQuery1 = " UPDATE cards SET Question = '" + questionU + "', Answer = '" + answerU + "' WHERE id = " + Id + " ";
+        String connectQuery2 = " DELETE FROM perfect_cards WHERE id = " + Id + " ;DELETE FROM good_cards WHERE id = " + Id + ";DELETE FROM bad_cards WHERE id = " + Id + " ";
+        String connectQuery3 = " INSERT INTO bad_cards VALUES " + Id + " ";
+
         try {
             Statement statement = connectDB.createStatement();
-            statement.executeUpdate(connectQuery);
+            statement.executeUpdate(connectQuery1);
+            statement.executeUpdate(connectQuery2);
+            statement.executeUpdate(connectQuery3);
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -203,7 +203,7 @@
                   </cursor>
                </ImageView>
                <Rectangle fx:id="recentCards" arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="435.0" layoutX="327.0" layoutY="576.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);" width="956.0" />
-               <Text fill="#15192c" layoutX="370.0" layoutY="628.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Cards">
+               <Text fx:id="RecentCards" fill="#15192c" layoutX="370.0" layoutY="628.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Cards">
                   <font>
                      <Font name="Ubuntu Regular" size="32.0" />
                   </font>

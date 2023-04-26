@@ -10,18 +10,20 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Navbar implements Initializable  {
+public class Navbar implements Initializable {
 
     @FXML
     private Group myPracticeGroup;
@@ -41,11 +43,11 @@ public class Navbar implements Initializable  {
     @FXML
     private ImageView Icon_practice;
     @FXML
-    private  Rectangle R_manage;
+    private Rectangle R_manage;
     @FXML
-    private  Text manageText;
+    private Text manageText;
     @FXML
-    private  ImageView Icon_manage;
+    private ImageView Icon_manage;
     @FXML
     private Rectangle R_account;
     @FXML
@@ -85,13 +87,12 @@ public class Navbar implements Initializable  {
 
         myPracticeGroup.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {
-                switchTo(event,"practiceH.fxml");
+                switchTo(event, "practiceH.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
         });
-
 
 
         MyLogoutGroup.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
@@ -101,6 +102,17 @@ public class Navbar implements Initializable  {
             OutHover(event, R_logout, logoutText, Icon_logout);
         });
 
+        MyLogoutGroup.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("manage.fxml")));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+
+        });
 
         MySettingGroup.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             OnHover(event, R_setting, settingText, Icon_setting);
@@ -108,6 +120,7 @@ public class Navbar implements Initializable  {
         MySettingGroup.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
             OutHover(event, R_setting, settingText, Icon_setting);
         });
+
 
         MyAccountGroup.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             OnHover(event, R_account, accountText, Icon_account);
@@ -117,7 +130,7 @@ public class Navbar implements Initializable  {
         });
 
         myManageGroup.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            OnHover(event, R_manage, manageText, Icon_manage );
+            OnHover(event, R_manage, manageText, Icon_manage);
         });
         myManageGroup.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
             OutHover(event, R_manage, manageText, Icon_manage);
@@ -125,13 +138,12 @@ public class Navbar implements Initializable  {
 
         myManageGroup.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {
-                switchTo(event,"manage.fxml");
+                switchTo(event, "manage.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
         });
-
 
 
     }
@@ -151,15 +163,17 @@ public class Navbar implements Initializable  {
     public void switchTo(Event event, String target) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(target)));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,1450,840);
-        //stage.setMaximized(true);
+        Scene scene = new Scene(root, 1450, 840);
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("Logo.png")));
+        stage.getIcons().add(icon);
+        stage.setTitle("Memora");
+
         String css = Objects.requireNonNull(this.getClass().getResource("index.css")).toExternalForm();
         scene.getStylesheets().add(css);
+
         stage.setScene(scene);
         stage.show();
     }
-
-
 
 
 }

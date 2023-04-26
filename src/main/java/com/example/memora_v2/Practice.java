@@ -8,6 +8,7 @@ import javafx.animation.Timeline;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
@@ -18,6 +19,7 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -43,18 +45,37 @@ public class Practice extends Navbar {
     private Button goodButton;
     @FXML
     private Button badButton;
+    @FXML
+    private Group judgeButtons;
+    @FXML
+    private Label progressTotal;
+    @FXML
+    private Label progressLabel;
 
     private String Answer;
 
     private String Question;
     private List<Integer> ListOfIds = new ArrayList<>();
-    private int i = 1;
+    private int i = 0;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        practiceCardsDB(Settings.quickPractice);
+
+        if (PracticeH.session == 1) {
+            System.out.println("10");
+            practiceCardsDB(Settings.quickPractice);
+            progressTotal.setText(String.valueOf(Settings.quickPractice));
+        } else if (PracticeH.session == 0){
+            System.out.println("20");
+            practiceCardsDB(Settings.mediumPractice);
+            progressTotal.setText(String.valueOf(Settings.mediumPractice));
+        }
+        else {
+            System.out.println("ALL");
+            practiceCardsAll();
+        }
 
         selectCard(ListOfIds.get(0));
         LabelAnswer.setText(Question);
@@ -66,19 +87,23 @@ public class Practice extends Navbar {
         rotateTransition.setByAngle(180);
         rotateTransition.play();
 
+
         Title_QA.setStyle("-fx-opacity: 0;");
         LabelAnswer.setStyle("-fx-opacity: 0;");
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.1), event1 -> {
+            judgeButtons.setVisible(true);
             questionP.setText("Answer");
             questionP.setTranslateX(11);
             Title_QA.setStyle("-fx-opacity: 1;");
             LabelAnswer.setText(Answer);
             LabelAnswer.setStyle("-fx-opacity: 1;");
+
         }));
         timeline.playFromStart();
     }
 
-    public void practiceCardsDB (float numberOfCards) {
+    public void practiceCardsDB (int numberOfCards) {
+
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
         String connectQueryBad = "SELECT id FROM bad_cards ORDER BY RAND() LIMIT "+(int)(numberOfCards*0.6)+" ";
@@ -92,7 +117,6 @@ public class Practice extends Navbar {
             ResultSet queryOutputBad = statement.executeQuery(connectQueryBad);
 
 
-
             while (queryOutputBad.next()) {
                 ListOfIds.add(queryOutputBad.getInt("id"));
             }
@@ -104,6 +128,17 @@ public class Practice extends Navbar {
             while (queryOutputPerfect.next()) {
                 ListOfIds.add(queryOutputPerfect.getInt("id"));
             }
+            System.out.println(ListOfIds.size());
+            System.out.println(numberOfCards);
+
+            if(ListOfIds.size() < numberOfCards){
+
+                String connectQueryC = "SELECT id FROM cards ORDER BY RAND() LIMIT "+(int)(numberOfCards-ListOfIds.size())+" ";
+                ResultSet queryOutputC = statement.executeQuery(connectQueryC);
+                while (queryOutputC.next()) {
+                    ListOfIds.add(queryOutputC.getInt("id"));
+                }
+            }
             Collections.shuffle(ListOfIds);
 
         } catch (Exception e) {
@@ -112,7 +147,36 @@ public class Practice extends Navbar {
         System.out.println(ListOfIds);
     }
 
+
+    public void practiceCardsAll () {
+        System.out.println("All");
+        int total = 0;
+        DataBase connectNow = new DataBase();
+        Connection connectDB = connectNow.getConnection();
+        try {
+            Statement statement = connectDB.createStatement();
+            String connectQueryC = "SELECT id FROM cards ORDER BY RAND() ";
+            ResultSet queryOutputC = statement.executeQuery(connectQueryC);
+
+
+            while (queryOutputC.next()) {
+                ListOfIds.add(queryOutputC.getInt("id"));
+                total++;
+            }
+            Collections.shuffle(ListOfIds);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        progressTotal.setText(String.valueOf(total));
+        System.out.println(ListOfIds);
+    }
+
+
+
     public void selectCard(int id){
+        progressLabel.setText(String.valueOf("0"+(i+1)));
+        judgeButtons.setVisible(false);
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
         String connectQuery = " SELECT Question, Answer FROM cards where id = " + id + " ";
@@ -131,29 +195,98 @@ public class Practice extends Navbar {
         }
     }
 
-    public void perfect(Event event)  {
-        if (ListOfIds.isEmpty()){
-            System.out.println("it's done");
-            return;
-        }
-        selectCard(ListOfIds.get(i));
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1), questionText);
-        rotateTransition.setAxis(Rotate.Y_AXIS);
-        rotateTransition.setByAngle(-180);
-        rotateTransition.play();
 
-        Title_QA.setStyle("-fx-opacity: 0;");
-        LabelAnswer.setStyle("-fx-opacity: 0;");
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.1), event1 -> {
-            questionP.setText("Question");
-            questionP.setTranslateX(-5);
-            Title_QA.setStyle("-fx-opacity: 1;");
-            LabelAnswer.setText(Question);
-            LabelAnswer.setStyle("-fx-opacity: 1;");
-        }));
-        timeline.playFromStart();
-        i++;
+    public void goFromAnswer(Event event) throws IOException {
+        if (i+1 == ListOfIds.size()){
+            switchTo(event, "practiceH.fxml");
+        }
+        else {
+            selectCard(ListOfIds.get(++i));
+            RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1), questionText);
+            rotateTransition.setAxis(Rotate.Y_AXIS);
+            rotateTransition.setByAngle(-180);
+            rotateTransition.play();
+
+            Title_QA.setStyle("-fx-opacity: 0;");
+            LabelAnswer.setStyle("-fx-opacity: 0;");
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.1), event1 -> {
+                questionP.setText("Question");
+                questionP.setTranslateX(-5);
+                Title_QA.setStyle("-fx-opacity: 1;");
+                LabelAnswer.setText(Question);
+                LabelAnswer.setStyle("-fx-opacity: 1;");
+            }));
+            timeline.playFromStart();
+        }
+
     }
+
+    public void perfect(Event event) throws IOException {
+
+        System.out.println(i);
+        int id = ListOfIds.get(i);
+        System.out.println(id);
+        DataBase connectNow = new DataBase();
+        Connection connectDB = connectNow.getConnection();
+        String connectQuery1 = " DELETE FROM perfect_cards WHERE id = "+ id +" ;DELETE FROM good_cards WHERE id = "+ id +";DELETE FROM bad_cards WHERE id = "+ id +" ";
+        String connectQuery2 = " INSERT INTO perfect_cards VALUES ("+id+") ";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(connectQuery1);
+            statement.executeUpdate(connectQuery2);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        goFromAnswer(event);
+    }
+
+    public void good(Event event) throws IOException {
+        int id = ListOfIds.get(i);
+        System.out.println(i);
+        System.out.println(id);
+        DataBase connectNow = new DataBase();
+        Connection connectDB = connectNow.getConnection();
+        String connectQuery1 = " DELETE FROM perfect_cards WHERE id = "+ id +" ;DELETE FROM good_cards WHERE id = "+ id +";DELETE FROM bad_cards WHERE id = "+ id +" ";
+        String connectQuery2 = " INSERT INTO good_cards VALUES ("+id+") ";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(connectQuery1);
+            statement.executeUpdate(connectQuery2);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        goFromAnswer(event);
+
+    }
+
+    public void bad(Event event) throws IOException {
+        int id = ListOfIds.get(i);
+        System.out.println(i);
+        System.out.println(id);
+        DataBase connectNow = new DataBase();
+        Connection connectDB = connectNow.getConnection();
+        String connectQuery1 = " DELETE FROM perfect_cards WHERE id = "+ id +" ;DELETE FROM good_cards WHERE id = "+ id +";DELETE FROM bad_cards WHERE id = "+ id +" ";
+        String connectQuery2 = " INSERT INTO bad_cards VALUES ("+id+") ";
+
+        try {
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(connectQuery1);
+            statement.executeUpdate(connectQuery2);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        goFromAnswer(event);
+
+    }
+
+
+
+
 }
 
 

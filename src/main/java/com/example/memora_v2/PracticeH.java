@@ -22,26 +22,44 @@ import java.util.ResourceBundle;
 public class PracticeH extends Navbar implements Initializable {
     @FXML
     private Button tenButton;
+    @FXML
+    private Button twentyButton;
+    @FXML
+    private Button allButton;
 
-
+    static int session = 1;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+
         tenButton.setOnMouseClicked(event -> {
             try {
                 switchTo(event, "practice.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         });
 
+        twentyButton.setOnMouseClicked(event -> {
+            try {
+                session = 0;
+                switchTo(event, "practice.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        allButton.setOnMouseClicked(event -> {
+            try {
+                session = 2;
+                switchTo(event, "practice.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
-
-
 
 
 }
