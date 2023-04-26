@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memora_v2.Account">
+    <children>
+        <ScrollPane hbarPolicy="NEVER" stylesheets="@index.css" vmax="1.5" vvalue="0.4">
+            <content>
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0">
+                    <ImageView fitHeight="1024.0" fitWidth="1438.0" layoutX="-1.0" layoutY="-2.0">
+                        <image>
+                            <Image url="@Manage.png" />
+                        </image>
+                    </ImageView>
+                    <Rectangle fx:id="bioBox" arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="272.0" layoutX="364.0" layoutY="320.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 0, 0, 0, 4);" width="1002.0">
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Rectangle>
+                    <Text fx:id="title" fill="#15192c" layoutX="324.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Your Account">
+                        <font>
+                            <Font name="Ubuntu Medium" size="40.0" />
+                        </font>
+                    </Text>
+                    <Text fx:id="textTitle" fill="#92959e" layoutX="325.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualize your account info here">
+                        <font>
+                            <Font name="Ubuntu Regular" size="20.0" />
+                        </font>
+                    </Text>
+                    <Group fx:id="Title_QA" layoutX="750.0" layoutY="220.0" />
+                    <Group fx:id="MyLogoutGroup" layoutX="42.0" layoutY="751.0">
+                        <children>
+                            <Rectangle fx:id="R_logout" arcHeight="50.0" arcWidth="50.0" fill="#f3f0ff" height="78.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="230.0">
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Rectangle>
+                            <Text fx:id="logoutText" fill="#909090" layoutX="90.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log-out" wrappingWidth="95.464111328125">
+                                <font>
+                                    <Font name="Ubuntu Regular" size="24.0" />
+                                </font>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Text>
+                            <ImageView fx:id="DIcon_logout" layoutX="34.0" layoutY="21.0">
+                                <image>
+                                    <Image url="@DIcon_logout.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                            <ImageView fx:id="Icon_logout" layoutX="34.0" layoutY="21.0" opacity="0.0">
+                                <image>
+                                    <Image url="@Icon_logout.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                        </children>
+                    </Group>
+                    <Group fx:id="MySettingGroup" layoutX="42.0" layoutY="660.0">
+                        <children>
+                            <Rectangle fx:id="R_setting" arcHeight="50.0" arcWidth="50.0" fill="#f3f0ff" height="78.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="230.0">
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Rectangle>
+                            <Text fx:id="settingText" fill="#909090" layoutX="89.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="95.464111328125">
+                                <font>
+                                    <Font name="Ubuntu Regular" size="24.0" />
+                                </font>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Text>
+                            <ImageView fx:id="DIcon_setting" layoutX="35.0" layoutY="24.0">
+                                <image>
+                                    <Image url="@DIcon_setting.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                            <ImageView fx:id="Icon_setting" layoutX="35.0" layoutY="24.0" opacity="0.0">
+                                <image>
+                                    <Image url="@Icon_setting.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                        </children>
+                    </Group>
+                    <Group fx:id="MyAccountGroup" layoutX="42.0" layoutY="438.0">
+                        <children>
+                            <Rectangle fx:id="R_account" arcHeight="50.0" arcWidth="50.0" fill="#f3f0ff" height="78.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="230.0">
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Rectangle>
+                            <Text fx:id="accountText" fill="#909090" layoutX="95.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account" wrappingWidth="95.464111328125">
+                                <font>
+                                    <Font name="Ubuntu Regular" size="24.0" />
+                                </font>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Text>
+                            <ImageView fx:id="DIcon_account" layoutX="36.0" layoutY="21.0">
+                                <image>
+                                    <Image url="@DIcon_account.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                            <ImageView fx:id="Icon_account" layoutX="36.0" layoutY="21.0" opacity="0.0">
+                                <image>
+                                    <Image url="@Icon_account.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                        </children>
+                    </Group>
+                    <Group fx:id="myManageGroup" layoutX="42.0" layoutY="343.0">
+                        <children>
+                            <Rectangle fx:id="R_manage" arcHeight="50.0" arcWidth="50.0" fill="#f3f0ff" height="78.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="230.0">
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Rectangle>
+                            <Text fx:id="manageText" fill="#909090" layoutX="93.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage">
+                                <font>
+                                    <Font name="Ubuntu Regular" size="24.0" />
+                                </font>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Text>
+                            <ImageView fx:id="DIcon_manage" layoutX="36.0" layoutY="21.0">
+                                <image>
+                                    <Image url="@DIcon_manage.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                            <ImageView fx:id="Icon_manage" layoutX="36.0" layoutY="21.0" opacity="0.0">
+                                <image>
+                                    <Image url="@Icon_manage.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                        </children>
+                    </Group>
+                    <Group fx:id="myPracticeGroup" layoutX="42.0" layoutY="242.0">
+                        <children>
+                            <Rectangle fx:id="R_practice" arcHeight="50.0" arcWidth="50.0" fill="#f3f0ff" height="78.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="230.0">
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Rectangle>
+                            <Text fx:id="practiceText" fill="#909090" layoutX="92.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Practice" wrappingWidth="95.464111328125">
+                                <font>
+                                    <Font name="Ubuntu Regular" size="24.0" />
+                                </font>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </Text>
+                            <ImageView fx:id="DIcon_practice" layoutX="34.0" layoutY="21.0">
+                                <image>
+                                    <Image url="@DIcon_practice.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                            <ImageView fx:id="Icon_practice" layoutX="34.0" layoutY="21.0" opacity="0.0">
+                                <image>
+                                    <Image url="@Icon_practice.png" />
+                                </image>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                            </ImageView>
+                        </children>
+                    </Group>
+               <Text fx:id="quickNumber" layoutX="357.0" layoutY="707.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Cards per Quick Session :" />
+               <Label fx:id="numberChosenQuick" layoutX="918.0" layoutY="674.0" prefHeight="50.0" prefWidth="233.0" stylesheets="@index.css" text="numberChosen" />
+               <Text fx:id="mediumNumber" layoutX="357.0" layoutY="791.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Cards per Medium Session :" />
+               <Label fx:id="labelBio" alignment="TOP_LEFT" layoutX="374.0" layoutY="365.0" prefHeight="207.0" prefWidth="982.0" text="bio Label" wrapText="true" />
+               <Label fx:id="numberChosenMedium" layoutX="918.0" layoutY="754.0" prefHeight="50.0" prefWidth="233.0" text="numberChosen" />
+                      <Line endX="-22.4000244140625" endY="3.0517578125E-5" layoutX="903.0" layoutY="355.0" startX="-100.0" stroke="#c8b6ff" strokeWidth="2.0" />
+                      <Text fx:id="bioTitle" layoutX="819.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bio" wrappingWidth="55.11600112915039">
+                          <font>
+                              <Font name="Ubuntu Medium" size="32.0" />
+                          </font>
+                      </Text>
+               <Label fx:id="nameLabel" layoutX="522.0" layoutY="233.0" prefHeight="48.0" prefWidth="433.0" stylesheets="@index.css" text="Name" />
+               <Label fx:id="Name" layoutX="364.0" layoutY="239.0" text="Name:" />
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</VBox>
