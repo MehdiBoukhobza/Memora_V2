@@ -86,7 +86,7 @@ public class Manage extends Navbar {
 
     public void switchToDMCard(MouseEvent event) throws IOException {
         Id = myListView.getItems().size() - myListView.getSelectionModel().getSelectedIndex();
-        System.out.println(Id);
+
 
         switchTo(event, "DMCard.fxml");
 

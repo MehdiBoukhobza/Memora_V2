@@ -64,16 +64,13 @@ public class Practice extends Navbar {
         super.initialize(url, resourceBundle);
 
         if (PracticeH.session == 1) {
-            System.out.println("10");
             practiceCardsDB(Settings.quickPractice);
             progressTotal.setText(String.valueOf(Settings.quickPractice));
         } else if (PracticeH.session == 0){
-            System.out.println("20");
             practiceCardsDB(Settings.mediumPractice);
             progressTotal.setText(String.valueOf(Settings.mediumPractice));
         }
         else {
-            System.out.println("ALL");
             practiceCardsAll();
         }
 
@@ -128,8 +125,7 @@ public class Practice extends Navbar {
             while (queryOutputPerfect.next()) {
                 ListOfIds.add(queryOutputPerfect.getInt("id"));
             }
-            System.out.println(ListOfIds.size());
-            System.out.println(numberOfCards);
+
 
             if(ListOfIds.size() < numberOfCards){
 
@@ -144,12 +140,12 @@ public class Practice extends Navbar {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(ListOfIds);
+
     }
 
 
     public void practiceCardsAll () {
-        System.out.println("All");
+
         int total = 0;
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
@@ -169,7 +165,7 @@ public class Practice extends Navbar {
             e.printStackTrace();
         }
         progressTotal.setText(String.valueOf(total));
-        System.out.println(ListOfIds);
+
     }
 
 
@@ -223,9 +219,8 @@ public class Practice extends Navbar {
 
     public void perfect(Event event) throws IOException {
 
-        System.out.println(i);
+
         int id = ListOfIds.get(i);
-        System.out.println(id);
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
         String connectQuery1 = " DELETE FROM perfect_cards WHERE id = "+ id +" ;DELETE FROM good_cards WHERE id = "+ id +";DELETE FROM bad_cards WHERE id = "+ id +" ";
@@ -244,8 +239,7 @@ public class Practice extends Navbar {
 
     public void good(Event event) throws IOException {
         int id = ListOfIds.get(i);
-        System.out.println(i);
-        System.out.println(id);
+
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
         String connectQuery1 = " DELETE FROM perfect_cards WHERE id = "+ id +" ;DELETE FROM good_cards WHERE id = "+ id +";DELETE FROM bad_cards WHERE id = "+ id +" ";
@@ -265,8 +259,7 @@ public class Practice extends Navbar {
 
     public void bad(Event event) throws IOException {
         int id = ListOfIds.get(i);
-        System.out.println(i);
-        System.out.println(id);
+
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
         String connectQuery1 = " DELETE FROM perfect_cards WHERE id = "+ id +" ;DELETE FROM good_cards WHERE id = "+ id +";DELETE FROM bad_cards WHERE id = "+ id +" ";

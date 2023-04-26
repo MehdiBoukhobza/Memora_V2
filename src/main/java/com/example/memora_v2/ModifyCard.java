@@ -76,7 +76,7 @@ public class ModifyCard extends Navbar {
             return;
         }
 
-        System.out.println(questionU + answerU);
+
 
 
         String connectQuery1 = " UPDATE cards SET Question = '" + questionU + "', Answer = '" + answerU + "' WHERE id = " + Id + " ";

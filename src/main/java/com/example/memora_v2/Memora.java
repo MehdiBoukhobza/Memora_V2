@@ -24,6 +24,7 @@ public class Memora extends Application {
         stage.setTitle("Memora");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {

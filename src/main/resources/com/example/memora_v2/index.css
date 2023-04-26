@@ -67,7 +67,7 @@ AnchorPane {
 }
 
 
-#myAddButton, #myDeleteButton, #myModifyButton:hover {
+#myAddButton, #myDeleteButton, #saveB, #myModifyButton:hover {
     -fx-background-color: #736B92;
     -fx-font-family: 'Ubuntu Medium';
     -fx-background-radius: 20;
@@ -84,7 +84,7 @@ AnchorPane {
     -fx-font-size: 32px;
 }
 
-#myAddButton:hover, #myDeleteButton:hover {
+#myAddButton:hover, #myDeleteButton:hover, #saveB:hover {
     -fx-background-color: white;
     -fx-text-fill: #736B92;
     -fx-border-radius: 20;
@@ -332,3 +332,49 @@ AnchorPane {
     -fx-opacity: 0.5;
     -fx-font-weight: 100;
 }
+
+#nameUpdate, #bioUpdate, #birthdayUpdate, #mediumDeckUpdate, #quickDeckUpdate {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-border-radius: 20;
+    -fx-border-color: #504966;
+    -fx-border-width: 3px;
+    -fx-font-size: 32px;
+}
+
+#labelBio {
+    -fx-font-size: 28px;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-text-fill: #736B92;
+}
+
+#numberChosenQuick, #numberChosenMedium {
+    -fx-font-size: 30px;
+    -fx-font-family: 'Ubuntu Regular';
+    -fx-text-fill: #736B92;
+}
+
+#Name,#Birthday,#nameLabel, #BirthLabel {
+    -fx-font-size: 30px;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-text-fill: #736B92;
+}
+
+
+#bioTitle,#title, #BirthdayText, #quickNumber, #mediumNumber, #Name,#Birthday{
+    -fx-font-size: 30px;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-text-fill: #736B92;
+}
+
+#Name,#Birthday,#bioTitle{
+    -fx-text-fill: Black;
+}
+
+#uName, #uBirthday, #uBio, #uBio, #uMedium, #uquick {
+    -fx-font-size: 30px;
+    -fx-font-family: 'Ubuntu Medium';
+    -fx-text-fill: #736B92;
+}
+
+

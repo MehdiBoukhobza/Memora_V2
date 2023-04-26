@@ -121,12 +121,30 @@ public class Navbar implements Initializable {
             OutHover(event, R_setting, settingText, Icon_setting);
         });
 
+        MySettingGroup.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            try {
+                switchTo(event, "settings.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
 
         MyAccountGroup.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             OnHover(event, R_account, accountText, Icon_account);
         });
         MyAccountGroup.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
             OutHover(event, R_account, accountText, Icon_account);
+        });
+
+        MyAccountGroup.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            try {
+                switchTo(event, "account.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         });
 
         myManageGroup.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
