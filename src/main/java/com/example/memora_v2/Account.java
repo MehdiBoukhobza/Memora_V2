@@ -30,7 +30,7 @@ public class Account extends Navbar {
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
 
-        String connectQuery = " SELECT FullName, Bio FROM user";
+        String connectQuery = " SELECT * FROM user";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -39,13 +39,14 @@ public class Account extends Navbar {
             while (queryOutput.next()) {
                 nameLabel.setText(queryOutput.getString("FullName"));
                 labelBio.setText(queryOutput.getString("Bio"));
+                numberChosenQuick.setText(queryOutput.getString("Nb_Quick"));
+                numberChosenMedium.setText(queryOutput.getString("Nb_Medium"));
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        numberChosenQuick.setText(String.valueOf(Settings.quickPractice));
-        numberChosenMedium.setText(String.valueOf(Settings.mediumPractice));
+
 
     }
 }

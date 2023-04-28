@@ -26,8 +26,8 @@ public class Settings extends Navbar {
     @FXML
     private Label SuccessMessage;
 
-    static int quickPractice = 10;
-    static int mediumPractice = 20;
+    static int quickPractice;
+    static int mediumPractice;
 
 
     @Override
@@ -36,11 +36,11 @@ public class Settings extends Navbar {
         display();
     }
 
-    public void display(){
+    public void display() {
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
 
-        String connectQuery = " SELECT FullName, Bio FROM user";
+        String connectQuery = " SELECT * FROM user";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -49,27 +49,28 @@ public class Settings extends Navbar {
             while (queryOutput.next()) {
                 uName.setText(queryOutput.getString("FullName"));
                 uBio.setText(queryOutput.getString("Bio"));
+                uquick.setText(String.valueOf(queryOutput.getInt("Nb_Quick")));
+                uMedium.setText(String.valueOf(queryOutput.getInt("Nb_Medium")));
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        uquick.setText(String.valueOf(Settings.quickPractice));
-        uMedium.setText(String.valueOf(Settings.mediumPractice));
+
     }
 
-    public void save(){
+    public void save() {
         DataBase connectNow = new DataBase();
         Connection connectDB = connectNow.getConnection();
 
         String Name = uName.getText();
         String Bio = uBio.getText();
-        Settings.quickPractice = Integer.parseInt(uquick.getText());
-        Settings.mediumPractice = Integer.parseInt(uMedium.getText());
+        quickPractice = Integer.parseInt(uquick.getText());
+        mediumPractice = Integer.parseInt(uMedium.getText());
 
 
-        String connectQuery1 = " UPDATE user SET FullName = '" + Name + "', Bio = '" + Bio + "' ";
+        String connectQuery1 = " UPDATE user SET FullName = '" + Name + "', Bio = '" + Bio + "', Nb_Quick = " + quickPractice + ", Nb_Medium= " + mediumPractice + " Where id = "+1+" " ;
 
         try {
             Statement statement = connectDB.createStatement();
