@@ -6,7 +6,7 @@ Steps to follow to execute the application:
    the Username has to be: root
    the Password has to be: 18461860
 
-2- Open the sql file nammed: "Database Memora App" in MySQL
+2- Open the sql file named: "Database Memora App" in MySQL
 
 3- Execute the script
 
